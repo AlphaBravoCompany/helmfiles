@@ -21,7 +21,7 @@ releases:
     <<: *getVars
   - name: mongodb
     installed: {{ eq .Environment.Name "default" | toYaml }}
-    namespace: mongodb
+    namespace: abscan
     chart: bitnami/mongodb
     <<: *getVars
 
