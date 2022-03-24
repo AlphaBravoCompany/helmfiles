@@ -1,6 +1,13 @@
 # AlphaBravo Helmfile Repository
 A respository for deploying Helm charts using [Helmfile](https://github.com/roboll/helmfile).
 
+## Requirements
+* [Helm](https://helm.sh/docs/intro/install/) >= v3.8.1
+* [Helmfile](https://github.com/roboll/helmfile) >= v0.143.1
+* [Helm Secrets](https://github.com/jkroepke/helm-secrets) >= 3.12.0
+* [sops](https://github.com/mozilla/sops) >= 3.7.2
+* [Age](https://github.com/FiloSottile/age) >= v1.0.0
+
 ## Instructions
 Development deployment:
 ```bash
