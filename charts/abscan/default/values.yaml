@@ -1,0 +1,76 @@
+replicaCount: 1
+
+registryCredentials:
+    enabled: true
+    registry: https://registry.gitlab.com
+
+imagePullSecrets: abscan-registry-key
+# kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+
+nameOverride: "abscan"
+fullnameOverride: "abscan"
+
+serviceAccount:
+    create: true
+    annotations: {}
+    name: "abscan"
+
+images:
+    api:
+        registry: registry.gitlab.com/alphabravocompany/abscan/nginx
+        tag: latest
+        pullPolicy: Always
+    operator:
+        registry: eengelking/abscan-operator
+        tag: 0.1.1
+        pullPolicy: Always
+    rbac:
+        registry: gcr.io/kubebuilder/kube-rbac-proxy
+        tag: v0.8.0
+        pullPolicy: Always
+    ui:
+        registry: registry.gitlab.com/alphabravocompany/abscan/nginx
+        tag: latest
+        pullPolicy: Always
+
+service:
+    type: ClusterIP
+    api:
+        port: 80
+        targetPort: 80
+    ui:
+        port: 80
+        targetPort: 80
+
+abscan:
+    api:
+        name: abscan-api
+        variables:
+            mode: development
+            host: 0.0.0.0
+            cors:
+                origins: http://localhost
+            gitlab:
+                refContainer: dev-images-2.1.0
+                refFilesystem: dev-filesystem-2.1.0
+                refDockerfile: dev-dockerfiles-1.2.1
+                projectURL: https://gitlab.com/api/v4/projects/
+            database:
+                db:
+                    results: abscan
+                    scans: scans
+                    cve: cvedb
+            jwt:
+                accessTokenExpiration: 3600
+                refreshTokenExpiration: 2592000
+            cookie:
+                sameSite: None
+                secure: 1
+    ui:
+        name: abscan-ui
+        variables:
+            apiUrl: http://localhost:8090
+    debug:
+        sentry:
+            accessPoint: abc
+            traceLevel: 1

@@ -1,0 +1,31 @@
+bases:
+- environments.yaml
+
+templates:
+  getVars: &getVars
+    values:
+    - "./charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/values.yaml"
+    secrets:
+    - "./charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/secrets.yaml"
+
+repositories:
+  - name: ablabs
+    url: https://helm.ablabs.io/abscan
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: abscan
+    namespace: abscan
+    chart: ablabs/abscan
+    <<: *getVars
+  - name: mongodb
+    installed: {{ eq .Environment.Name "default" | toYaml }}
+    namespace: mongodb
+    chart: bitnami/mongodb
+    <<: *getVars
+
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  createNamespace: true

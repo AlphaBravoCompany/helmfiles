@@ -1,0 +1,16 @@
+creation_rules:
+  ## Default/Dev
+  - path_regex: .*/default/.*
+    age: >-
+      age1qeprrxh997g4dkfp34wfh8elkt9366rvavvzjjsvkn8zqd9mqems6udfhh
+  ## Staging
+  - path_regex: .*/staging/.*
+    age: >-
+      age1nxmv3klvjt4r0ey5k8dn8jk7wrwulsa083v8pv635hnd0dkugfys5ne878
+  ## Production
+  - path_regex: .*/production/.*
+    age: >-
+      age19ugvhes2nqjgd4mvgvwfxypymgqqq4v9dka5t2jys9uza5a9sppqf5rsxx
+  ## If nothing else matches, fall back to Default/Dev
+  - age: >-
+      age1qeprrxh997g4dkfp34wfh8elkt9366rvavvzjjsvkn8zqd9mqems6udfhh

@@ -1,0 +1,19 @@
+repositories:
+#   - name: ablabs
+#     url: https://helm.ablabs.io/abscan
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+#   - name: abscan
+#     namespace: abscan
+#     chart: ablabs/abscan
+#     values:
+#       - ./variables/default/values.yaml
+  - name: mongodb
+    namespace: mongodb
+    chart: bitnami/mongodb
+    values:
+      - ./charts/mongodb/default/values.yaml
+    secrets:
+      - ./charts/mongodb/default/secrets.yaml
