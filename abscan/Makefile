@@ -24,10 +24,10 @@ k3d-uninstall: ## Deletes the local K3d cluster. DESTRUCTIVE.
 	@k3d cluster delete abscan-dev
 
 helm-install: ## Deploys the Helm charts.
-	@helmfiles -e $(ENVIRONMENT) sync
+	@helmfile -e $(ENVIRONMENT) sync
 
 helm-uninstall: ## Removes the Helm deployment. DESTRUCTIVE.
-	@helmfiles destroy
+	@helmfile destroy
 
 setup: k3d-install helm-install ## Full development stack deployment.
 
