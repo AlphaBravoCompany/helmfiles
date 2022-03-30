@@ -18,7 +18,7 @@ serviceAccount:
 images:
     api:
         registry: registry.gitlab.com/alphabravocompany/abscan/api
-        tag: 0.1.0
+        tag: 0.1.1
         pullPolicy: Always
     operator:
         registry: eengelking/abscan-operator
@@ -30,7 +30,7 @@ images:
         pullPolicy: Always
     ui:
         registry: registry.gitlab.com/alphabravocompany/abscan/ui
-        tag: 0.1.0
+        tag: 0.1.1
         pullPolicy: Always
 
 service:
