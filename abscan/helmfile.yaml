@@ -15,14 +15,18 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: abscan
-    namespace: abscan
-    chart: ablabs/abscan
-    <<: *getVars
+  # - name: abscan
+  #   namespace: abscan
+  #   chart: ablabs/abscan
+  #   <<: *getVars
   - name: mongodb
     installed: {{ eq .Environment.Name "default" | toYaml }}
     namespace: abscan
     chart: bitnami/mongodb
+    <<: *getVars
+  - name: redis
+    namespace: abscan
+    chart: bitnami/redis
     <<: *getVars
 
 helmDefaults:

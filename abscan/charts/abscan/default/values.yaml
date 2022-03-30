@@ -55,7 +55,7 @@ smtp:
 
 redis:
     enabled: true
-    host: localhost
+    host: redis-master
     port: 6379
 
 abscan:
