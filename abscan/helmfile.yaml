@@ -24,6 +24,10 @@ releases:
     namespace: abscan
     chart: bitnami/mongodb
     <<: *getVars
+  - name: redis
+    namespace: abscan
+    chart: bitnami/redis
+    <<: *getVars
 
 helmDefaults:
   atomic: true

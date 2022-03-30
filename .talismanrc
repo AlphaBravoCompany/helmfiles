@@ -1,0 +1,14 @@
+fileignoreconfig:
+- filename: abscan/charts/abscan/default/secrets.yaml
+  checksum: 096a61a995b26b25338eb22e5ba1a803ca984854afb666ac3f3dec2994513f04
+- filename: abscan/charts/abscan/production/secrets.yaml
+  checksum: 6f90ae7805b9cf410201cfe5c8f37d5b2ec07b592df02dedbafd27b5c39378ed
+version: ""
+fileignoreconfig:
+- filename: abscan/charts/redis/production/secrets.yaml
+  checksum: e55bcaaea8801e6660bec77f0528e8c09f37212335839efac81f803f29577075
+- filename: abscan/charts/redis/default/secrets.yaml
+  checksum: 472cbfff20dfc9f10ececdd41f6fec11383b9cb43574df6775e0ad000f3a86d8
+- filename: tmp.yml
+  checksum: b5a133fae2d640642d5d37eeb80292390fc511fa6e78bc32e04e55a820746f39
+version: ""
