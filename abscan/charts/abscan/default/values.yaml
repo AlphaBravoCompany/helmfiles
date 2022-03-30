@@ -17,8 +17,8 @@ serviceAccount:
 
 images:
     api:
-        registry: registry.gitlab.com/alphabravocompany/abscan/nginx
-        tag: latest
+        registry: registry.gitlab.com/alphabravocompany/abscan/api
+        tag: 0.1.0
         pullPolicy: Always
     operator:
         registry: eengelking/abscan-operator
@@ -29,8 +29,8 @@ images:
         tag: v0.8.0
         pullPolicy: Always
     ui:
-        registry: registry.gitlab.com/alphabravocompany/abscan/nginx
-        tag: latest
+        registry: registry.gitlab.com/alphabravocompany/abscan/ui
+        tag: 0.1.0
         pullPolicy: Always
 
 service:
@@ -41,6 +41,11 @@ service:
     ui:
         port: 80
         targetPort: 80
+
+smtp:
+    enabled: true
+    provider: smtp
+    secure: 1
 
 abscan:
     api:
