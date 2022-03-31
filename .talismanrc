@@ -12,3 +12,9 @@ fileignoreconfig:
 - filename: tmp.yml
   checksum: b5a133fae2d640642d5d37eeb80292390fc511fa6e78bc32e04e55a820746f39
 version: ""
+fileignoreconfig:
+- filename: abscan/charts/abscan/default/values.yaml
+  checksum: c30d378d32c2998276433e0e5689af95a2edd22587a2a6734cad3f2dd60e0a54
+- filename: abscan/charts/abscan/production/values.yaml
+  checksum: 7396654f6baff6530da4a908b618338701122b3f69c961698d016afbec3030ff
+version: ""
