@@ -18,7 +18,7 @@ serviceAccount:
 images:
     api:
         registry: registry.gitlab.com/alphabravocompany/abscan/api
-        tag: 0.1.1
+        tag: 0.1.2
         pullPolicy: Always
     operator:
         registry: eengelking/abscan-operator
@@ -30,17 +30,38 @@ images:
         pullPolicy: Always
     ui:
         registry: registry.gitlab.com/alphabravocompany/abscan/ui
-        tag: 0.1.1
+        tag: 0.1.2
         pullPolicy: Always
 
 service:
     type: ClusterIP
     api:
-        port: 80
-        targetPort: 80
+        port: 8090
+        targetPort: 8090
     ui:
         port: 80
         targetPort: 80
+
+ingress:
+    className: nginx
+    api:
+        enabled: true
+        hostname: api.abscan.io
+        annotations: {}
+            # nginx.ingress.kubernetes.io/enable-cors: "true"
+            # nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+            # nginx.ingress.kubernetes.io/cors-allow-origin: "https://admin.example.com"
+            # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+        tls:
+            enabled: true
+            secretName: abscan-api-tls
+    ui:
+        enabled: true
+        hostname: abscan.io
+        annotations: {}
+        tls:
+            enabled: true
+            secretName: abscan-ui-tls
 
 smtp:
     enabled: true
@@ -62,10 +83,11 @@ abscan:
     api:
         name: abscan-api
         variables:
+            logging: enabled
             mode: development
             host: 0.0.0.0
             cors:
-                origins: http://localhost
+                origins: http://abscan-ui
             gitlab:
                 refContainer: dev-images-2.1.0
                 refFilesystem: dev-filesystem-2.1.0
@@ -80,12 +102,12 @@ abscan:
                 accessTokenExpiration: 3600
                 refreshTokenExpiration: 2592000
             cookie:
-                sameSite: None
-                secure: 1
+                sameSite: Lax
+                secure: 0
     ui:
         name: abscan-ui
         variables:
-            apiUrl: http://localhost:8090
+            apiUrl: http://api.abscan.io:8090
     debug:
         sentry:
             accessPoint: abc
