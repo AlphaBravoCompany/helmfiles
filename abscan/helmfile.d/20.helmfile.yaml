@@ -1,0 +1,30 @@
+bases:
+- ../environments.yaml
+
+templates:
+  getVars: &getVars
+    values:
+    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/values.yaml"
+    secrets:
+    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/secrets.yaml"
+
+repositories:
+  - name: abscan
+    url: https://helm.ablabs.io/abscan
+  - name: cve-search
+    url: https://helm.ablabs.io/cve-search
+
+releases:
+  - name: cvesearch
+    namespace: abscan
+    chart: cve-search/cve-search
+    <<: *getVars
+  - name: abscan
+    namespace: abscan
+    chart: abscan/abscan
+    <<: *getVars
+
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  createNamespace: true

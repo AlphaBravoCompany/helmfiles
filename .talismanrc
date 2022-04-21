@@ -28,3 +28,7 @@ fileignoreconfig:
 - filename: abscan/charts/cve-search/production/values.yaml
   checksum: d8149e8182e951bcedc3096642e6c36d5b8dcd5486ba1952b8212a3fe76cab2a
 version: ""
+fileignoreconfig:
+- filename: abscan/charts/cvesearch/default/secrets.yaml
+  checksum: 2999fbe09fbfd825702e0aa80bf0f9560d0d0be8c79b5891595e3ff25fadf58f
+version: ""
