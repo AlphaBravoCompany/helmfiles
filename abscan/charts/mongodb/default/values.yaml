@@ -1,3 +1,11 @@
 auth:
   enabled: true
   rootUser: root
+
+resources:
+  limits:
+    memory: "3Gi"
+    cpu: "2000m"
+  requests:
+    memory: "2Gi"
+    cpu: "1000m"
