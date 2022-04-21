@@ -18,3 +18,13 @@ fileignoreconfig:
 - filename: abscan/charts/abscan/production/values.yaml
   checksum: 7396654f6baff6530da4a908b618338701122b3f69c961698d016afbec3030ff
 version: ""
+fileignoreconfig:
+- filename: abscan/charts/cve-search/production/secrets.yaml
+  checksum: 730f9ed7f38ab0619f3edf10c7bcdf2fc84f572b4dd22894624fed6fee6a6421
+- filename: abscan/charts/cve-search/default/secrets.yaml
+  checksum: 0cda1b7559bb06743e07475f73c91c5c5839dacd08d082c4d2b60bd2b321aaae
+- filename: abscan/charts/cve-search/default/values.yaml
+  checksum: 84e0b55711ed9b5a734b7f2307cf2a4003abfca801e7cfb61d9635bf7f9b8b82
+- filename: abscan/charts/cve-search/production/values.yaml
+  checksum: d8149e8182e951bcedc3096642e6c36d5b8dcd5486ba1952b8212a3fe76cab2a
+version: ""
