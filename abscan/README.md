@@ -37,3 +37,6 @@ For managing the development Kubernetes cluster, an optional step is to [install
 ## Troubleshooting
 **Error:** `Bind for 0.0.0.0:80 failed: port is already allocated` <br>
 **Solution:** A K3d deployment or other service using port 80 on your local environment. Stop this service and try again.
+<br><br>
+**Error:** The K3d deployment hangs with the Docker log showing `unknown service runtime.v1alpha2.RuntimeService`. <br>
+**Solution:** Remove any older running K3d clusters and try again.

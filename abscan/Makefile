@@ -19,7 +19,7 @@ help:
 	done
 
 k3d-install: ## Deploys a local K3d cluster for development.
-	@k3d cluster create abscan-dev --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --k3s-arg "--tls-san=${DNSNAME}"@server:*
+	@k3d cluster create abscan-dev --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --k3s-arg "--tls-san=${DNSNAME}@server:*"
 
 k3d-uninstall: ## Deletes the local K3d cluster. DESTRUCTIVE.
 	@k3d cluster delete abscan-dev
