@@ -43,7 +43,7 @@ service:
         targetPort: 80
 
 ingress:
-    className: nginx
+    className:
     api:
         enabled: true
         hostname: api.abscan.io
