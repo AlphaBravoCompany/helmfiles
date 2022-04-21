@@ -9,15 +9,21 @@ templates:
     - "./charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/secrets.yaml"
 
 repositories:
-  - name: ablabs
+  - name: abscan
     url: https://helm.ablabs.io/abscan
+  - name: cve-search
+    url: https://helm.ablabs.io/cve-search
   - name: bitnami
     url: https://charts.bitnami.com/bitnami
 
 releases:
   - name: abscan
     namespace: abscan
-    chart: ablabs/abscan
+    chart: abscan/abscan
+    <<: *getVars
+  - name: cvesearch
+    namespace: abscan
+    chart: cve-search/cve-search
     <<: *getVars
   - name: mongodb
     installed: {{ eq .Environment.Name "default" | toYaml }}
