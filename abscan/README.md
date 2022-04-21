@@ -13,10 +13,12 @@ Before running the Make, be sure to update the `SOPS_AGE_KEY_FILE` environment v
 ## Make File Options
 
 ### Default variables
+Environment variables can be added to any make command. The defaults are:
 * **AGENT** = 1
 * **ENVIRONMENT** = default
 * **HOSTPORT** = 80
 * **SERVICEPORT** = 80
+* **DNSNAME** = abscan.io
 
 ### Commands
 
@@ -26,7 +28,7 @@ Before running the Make, be sure to update the `SOPS_AGE_KEY_FILE` environment v
 | helm-uninstall | Removes the Helm deployment created by the `helm-install` command. <br> **CRITICAL**: This is a DESTRUCTIVE action. |
 | k3d-install | Deploys a local K3d cluster with load balancer. <br><br> Optional variables: <br> - **AGENT** <br> - **HOSTPORT** <br> - **SERVICEPORT** <br><br> Examples: <br> `make k3d-install AGENT=3` <br> `make k3d-install AGENT=5 HOSTPORT=8080` <br> `make k3d-install HOSTPORT=8080 SERVICEPORT=81` <br><br> **NOTE**: This deployment will automatically change your `kubectl` context to `k3d-abscan-dev`. |
 | k3d-uninstall | Deletes the local K3d cluster created by the `k3d-install` command. <br> **CRITICAL**: This is a DESTRUCTIVE action. |
-| setup | Deploys a K3d cluster and installs the development Helm charts. |
+| setup | Deploys a K3d cluster and installs the development Helm charts. <br><br> Optional variables: <br> - **ENVIRONMENT** <br><br> Examples: <br> `make setup ENVIRONMENT=default DNSNAME=abscan.dev` <br> `make setup HOSTPORT=8080` |
 | setup-uninstall | Removes the development environment. <br> **CRITICAL**: This is a DESTRUCTIVE action. |
 
 ## Kubernetes Management
