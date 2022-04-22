@@ -43,24 +43,24 @@ service:
         targetPort: 80
 
 ingress:
-    className:
+    className: nginx
     api:
         enabled: true
         hostname: api.abscan.io
-        annotations: {}
-            # nginx.ingress.kubernetes.io/enable-cors: "true"
-            # nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-            # nginx.ingress.kubernetes.io/cors-allow-origin: "https://admin.example.com"
-            # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+        annotations:
+            nginx.ingress.kubernetes.io/enable-cors: "true"
+            nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+            nginx.ingress.kubernetes.io/cors-allow-origin: "http://abscan.io,https://abscan.io,http://abscan.dev,https://abscan.dev"
+            nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
         tls:
-            enabled: true
+            enabled: false
             secretName: abscan-api-tls
     ui:
         enabled: true
         hostname: abscan.io
         annotations: {}
         tls:
-            enabled: true
+            enabled: false
             secretName: abscan-ui-tls
 
 smtp:
@@ -87,7 +87,7 @@ abscan:
             mode: development
             host: 0.0.0.0
             cors:
-                origins: http://abscan-ui
+                origins: http://abscan.io,https://abscan.io,http://abscan.dev,https://abscan.dev
             gitlab:
                 refContainer: dev-images-2.1.0
                 refFilesystem: dev-filesystem-2.1.0
@@ -107,7 +107,7 @@ abscan:
     ui:
         name: abscan-ui
         variables:
-            apiUrl: http://api.abscan.io:8090
+            apiUrl: http://api.abscan.io:80
     debug:
         sentry:
             accessPoint: abc

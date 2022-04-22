@@ -3,3 +3,6 @@
 ## Values data can be pulled from the following:
 ## https://github.com/bitnami/charts/blob/master/bitnami/redis/README.md
 ## https://github.com/bitnami/charts/blob/master/bitnami/redis/values.yaml
+
+replica:
+  replicaCount: 1
