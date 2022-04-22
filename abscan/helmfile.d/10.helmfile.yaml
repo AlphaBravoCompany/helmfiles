@@ -13,6 +13,12 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
+  - name: nginxingress
+    installed: {{ eq .Environment.Name "default" | toYaml }}
+    namespace: abscan
+    chart: bitnami/nginx-ingress-controller
+    values:
+    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/values.yaml"
   - name: mongodb
     installed: {{ eq .Environment.Name "default" | toYaml }}
     namespace: abscan
