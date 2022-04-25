@@ -4,11 +4,8 @@ auth:
 
 resources:
   limits:
-    memory: "3Gi"
-    cpu: "2000m"
+    memory: "4Gi"
+    cpu: "4000m"
   requests:
-    memory: "2Gi"
-    cpu: "1000m"
-
-readinessProbe:
-  enabled: false
+    memory: "4Gi"
+    cpu: "4000m"
