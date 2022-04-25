@@ -12,6 +12,7 @@ ENVIRONMENT ?= default
 HOSTPORT ?= 80
 SERVICEPORT ?= 80
 DNSNAME ?= abscan.io
+NAMESPACE ?= abscan
 
 help:
 	@for makefile in $(MAKEFILE_LIST) ; do \
@@ -29,6 +30,7 @@ helm-install: ## Deploys the Helm charts.
 
 helm-uninstall: ## Removes the Helm deployment. DESTRUCTIVE.
 	@helmfile destroy
+	@kubectl delete namespace $(NAMESPACE)
 
 setup: k3d-install helm-install ## Full development stack deployment.
 
