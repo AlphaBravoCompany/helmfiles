@@ -19,11 +19,11 @@ images:
     api:
         registry: "registry.gitlab.com/alphabravocompany/abscan/api"
         tag: "0.1.3"
-        pullPolicy: Always
+        pullPolicy: "Always"
     operator:
         registry: "eengelking/abscan-operator"
         tag: "0.1.1"
-        pullPolicy: Always
+        pullPolicy: "Always"
     rbac:
         registry: "gcr.io/kubebuilder/kube-rbac-proxy"
         tag: "v0.8.0"
