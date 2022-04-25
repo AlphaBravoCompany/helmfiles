@@ -34,4 +34,4 @@ helm-uninstall: ## Removes the Helm deployment. DESTRUCTIVE.
 
 setup: k3d-install helm-install ## Full development stack deployment.
 
-setup-uninstall: k3d-uninstall k8s-delete-namespace ## Removes the development stack deployment.
+setup-uninstall: k3d-uninstall ## Removes the development stack deployment.
