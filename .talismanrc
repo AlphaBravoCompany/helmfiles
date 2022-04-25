@@ -38,3 +38,9 @@ fileignoreconfig:
 - filename: abscan/charts/abscan/production/values.yaml
   checksum: 66c7b9c323c4fc7c830b53fc3cc4bf0b9f2f67fd781aa99694216219552d3dd8
 version: ""
+fileignoreconfig:
+- filename: abscan/charts/abscan/production/secrets.yaml
+  checksum: cd41194ec72708726494698aad56c73c2a050694e2d2ebec3e9995d2d5e6cb9c
+- filename: abscan/charts/abscan/default/secrets.yaml
+  checksum: 3580bc6e9647b6d28bbc17d5acb7ad7600583c34946367d5846b07627b172147
+version: ""
