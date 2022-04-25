@@ -9,3 +9,6 @@ resources:
   requests:
     memory: "2Gi"
     cpu: "1000m"
+
+readinessProbe:
+  enabled: false
