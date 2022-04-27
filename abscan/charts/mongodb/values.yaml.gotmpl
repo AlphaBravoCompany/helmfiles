@@ -1,6 +1,7 @@
 auth:
   enabled: true
-  rootUser: root
+  rootUser: {{ .Values.mongodb.user | quote }}
+  rootPassword: {{ .Values.mongodb.pass | quote }}
 
 resources:
   limits:

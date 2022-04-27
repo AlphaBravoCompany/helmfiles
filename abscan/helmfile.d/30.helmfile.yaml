@@ -1,0 +1,22 @@
+bases:
+- ../environments.yaml
+
+templates:
+  getVars: &getVars
+    values:
+    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/values.yaml.gotmpl"
+
+repositories:
+  - name: abscan
+    url: https://helm.ablabs.io/abscan
+
+releases:
+  - name: abscan
+    namespace: abscan
+    chart: abscan/abscan
+    <<: *getVars
+
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  createNamespace: true

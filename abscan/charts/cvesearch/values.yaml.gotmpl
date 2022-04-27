@@ -1,0 +1,32 @@
+registryCredentials:
+    enabled: true
+    registry: {{ .Values.registryCredentials.registry | quote }}
+    password: {{ .Values.registryCredentials.password | quote }}
+    username: {{ .Values.registryCredentials.username | quote }}
+    email: {{ .Values.registryCredentials.email | quote }}
+
+imagePullSecrets: {{ .Values.imagePullSecrets | quote }}
+
+images:
+    updater:
+        registry: {{ .Values.images.cveUpdater.registry | quote }}
+        tag: {{ .Values.images.cveUpdater.tag | quote }}
+        pullPolicy: Always
+    restore:
+        registry: {{ .Values.images.cveRestore.registry | quote }}
+        tag: {{ .Values.images.cveRestore.tag | quote }}
+        pullPolicy: "Always"
+
+database:
+    connection: {{ .Values.mongodb.connectionType | quote }}
+    host: {{ .Values.mongodb.host | quote }}
+    port: {{ .Values.mongodb.port | quote }}
+    username: {{ .Values.mongodb.user | quote }}
+    password: {{ .Values.mongodb.pass | quote }}
+    cvedb: "cvedb"
+
+redis:
+    enabled: true
+    host: {{ .Values.redis.host | quote }}
+    port: {{ .Values.redis.port | quote }}
+    password: {{ .Values.redis.password | quote }}

@@ -1,0 +1,6 @@
+global:
+  redis:
+    password: {{ .Values.redis.password | quote }}
+
+replica:
+  replicaCount: {{ .Values.replicaCount }}

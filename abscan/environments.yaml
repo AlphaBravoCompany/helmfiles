@@ -1,3 +1,11 @@
 environments:
-  default:
-  production:
+    default:
+        values:
+        - "../variables/default/values.yaml"
+        secrets:
+        - "../variables/default/secrets.yaml"
+    production:
+        values:
+        - "../variables/production/values.yaml"
+        secrets:
+        - "../variables/production/secrets.yaml"

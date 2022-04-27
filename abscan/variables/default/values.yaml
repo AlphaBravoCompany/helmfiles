@@ -1,0 +1,74 @@
+replicaCount: 1
+
+mode: development
+
+hostname:
+    api: "api.abscan.io"
+    ui: "abscan.io"
+
+registryCredentials:
+    registry: "https://registry.gitlab.com"
+
+imagePullSecrets: "abscan-registry-key"
+
+images:
+    api:
+        registry: "registry.gitlab.com/alphabravocompany/abscan/api"
+        tag: "0.1.3"
+    operator:
+        registry: "eengelking/abscan-operator"
+        tag: "0.1.1"
+    rbac:
+        registry: "gcr.io/kubebuilder/kube-rbac-proxy"
+        tag: "v0.8.0"
+    ui:
+        registry: "registry.gitlab.com/alphabravocompany/abscan/ui"
+        tag: "0.1.3"
+    cveUpdater:
+        registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
+        tag: "latest"
+    cveRestore:
+        registry: "registry.gitlab.com/alphabravocompany/abscan/db-restore"
+        tag: "latest"
+
+redis:
+    host: "redis-master"
+    port: "6379"
+
+smtp:
+    from:
+        name: "ABScan"
+        address: "info@mail.ablabs.io"
+    service:
+        host: "smtp.sparkpostmail.com"
+        port: "587"
+        username: "SMTP_Injection"
+        useTLS: true
+
+cors:
+    origins: "http://abscan.io,https://abscan.io,http://abscan.dev,https://abscan.dev"
+    methods: "PUT, GET, POST, OPTIONS, DELETE, PATCH"
+
+gitlab:
+    refContainer: "dev-images-2.1.0"
+    refFilesystem: "dev-filesystem-2.1.0"
+    refDockerfile: "dev-dockerfiles-1.2.1"
+
+cookie:
+    sameSite: "Lax"
+    secure: "0"
+
+api:
+    logging: "enabled"
+    host: "0.0.0.0"
+
+service:
+    api:
+        port: "8090"
+    ui:
+        port: "80"
+
+ingress:
+    className: "nginx"
+    tls:
+        enabled: false

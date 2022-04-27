@@ -50,3 +50,21 @@ fileignoreconfig:
 - filename: abscan/charts/abscan/production/secrets.yaml
   checksum: 53aa086df54bbb8cebd6b72bd7f41dc3e7ed3ed0e966b2429993ecb583639607
 version: ""
+fileignoreconfig:
+- filename: abscan/environments.yaml
+  checksum: 93926174da525bc012d464f9855430b33084a76d349505e967cda6da10d38273
+- filename: abscan/variables/default/secrets.yaml
+  checksum: 5f8c2faa849dfd61529bf83aef331fe03388d6eaf5b2e19c98587a8f9bcd32c0
+- filename: abscan/charts/mongodb/values.yaml.gotmpl
+  checksum: f8578b20feb7295f2a685fcad6aed6e0394291010d48fb4e4fcba9f07edfb9d3
+- filename: abscan/charts/cvesearch/values.yaml.gotmpl
+  checksum: ea4dc2663b6758d20d1736cf522ac0f0f8d9f7815c261418bb9e1bfa11621ab1
+- filename: abscan/charts/redis/values.yaml.gotmpl
+  checksum: e0a32998e92e28e25b3c88570c5a86dca6efa867771dc8ba2e00608897ac81d9
+- filename: abscan/variables/default/values.yaml
+  checksum: 989da39d8e90b39db68c6764134787f2db2370ec29a4530fad9d4368726325b3
+- filename: abscan/variables/production/values.yaml
+  checksum: 559be8855b7d27326c79ce34fbcb3ded87a9c4a119ca3bb1fea818bf3f176df4
+- filename: abscan/charts/abscan/values.yaml.gotmpl
+  checksum: 6f5052f56c562d7bd39497a8cc0d21b9317f1a18db04932ba1b0b94e9ed49352
+version: ""
