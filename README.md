@@ -20,10 +20,10 @@ helmfile -e production sync
 ```
 
 ## Values
-Helm values are stored unencrypted and can be found in the `charts/[app]/[environment]/values.yaml` file.
+Helm values are stored unencrypted and can be found in the `[app]/variables/[environment]/values.yaml` file.
 
 ## Secrets
-Secrets are stored encrypted and can be found in the `charts/[app]/[environment]/secrets.yaml` file.
+Secrets are stored encrypted and can be found in the `[app]/variables/[environment]/secrets.yaml` file.
 
 ### Decrypting Secrets
 Secrets are encrypted using Helm Secrets and Age file encryption utility.
