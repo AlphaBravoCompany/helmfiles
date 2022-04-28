@@ -20,10 +20,13 @@ helmfile -e production sync
 ```
 
 ## Values
-Helm values are stored unencrypted and can be found in the `charts/[app]/[environment]/values.yaml` file.
+Helm values are stored unencrypted and can be found in the `[app]/variables/[environment]/values.yaml` file.
 
 ## Secrets
-Secrets are stored encrypted and can be found in the `charts/[app]/[environment]/secrets.yaml` file.
+Secrets are stored encrypted and can be found in the `[app]/variables/[environment]/secrets.yaml` file.
+
+## Helm Values Templates
+Templates are used to store the base `values.yaml` file for a given chart, which in turn uses Go templating to populate variables from the global `[app]/variables/[environment]/values.yaml` file. This helps keep the configuration DRY.  The templates are found in the `[app]/charts/[chartapp]/values.yaml.gotmpl` file.
 
 ### Decrypting Secrets
 Secrets are encrypted using Helm Secrets and Age file encryption utility.

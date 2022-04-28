@@ -1,0 +1,131 @@
+replicaCount: {{ .Values.replicaCount }}
+
+registryCredentials:
+    enabled: true
+    registry: {{ .Values.registryCredentials.registry | quote }}
+    password: {{ .Values.registryCredentials.password | quote }}
+    username: {{ .Values.registryCredentials.username | quote }}
+    email: {{ .Values.registryCredentials.email | quote }}
+
+imagePullSecrets: {{ .Values.imagePullSecrets | quote }}
+
+nameOverride: "abscan"
+fullnameOverride: "abscan"
+
+serviceAccount:
+    create: true
+    annotations: {}
+    name: "abscan"
+
+images:
+    api:
+        registry: {{ .Values.images.api.registry | quote }}
+        tag: {{ .Values.images.api.tag | quote }}
+        pullPolicy: "Always"
+    operator:
+        registry: {{ .Values.images.operator.registry | quote }}
+        tag: {{ .Values.images.operator.tag | quote }}
+        pullPolicy: "Always"
+    rbac:
+        registry: {{ .Values.images.rbac.registry | quote }}
+        tag: {{ .Values.images.rbac.tag | quote }}
+        pullPolicy: "Always"
+    ui:
+        registry: {{ .Values.images.ui.registry | quote }}
+        tag: {{ .Values.images.ui.tag | quote }}
+        pullPolicy: "Always"
+
+service:
+    type: "ClusterIP"
+    api:
+        port: {{ .Values.service.api.port | quote }}
+        targetPort: "8090"
+    ui:
+        port: {{ .Values.service.ui.port | quote }}
+        targetPort: "80"
+
+ingress:
+    className: "nginx"
+    api:
+        enabled: true
+        hostname: {{ .Values.hostname.api | quote }}
+        annotations:
+            nginx.ingress.kubernetes.io/enable-cors: "true"
+            nginx.ingress.kubernetes.io/cors-allow-methods: {{ .Values.cors.methods | quote }}
+            nginx.ingress.kubernetes.io/cors-allow-origin: {{ .Values.cors.origins | quote }}
+            nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+        tls:
+            enabled: {{ .Values.ingress.tls.enabled }}
+            secretName: "abscan-api-tls"
+    ui:
+        enabled: true
+        hostname: {{ .Values.hostname.ui | quote }}
+        annotations: {}
+        tls:
+            enabled: {{ .Values.ingress.tls.enabled }}
+            secretName: "abscan-ui-tls"
+
+smtp:
+    enabled: true
+    from:
+        name: {{ .Values.smtp.from.name | quote }}
+        address: {{ .Values.smtp.from.address | quote }}
+    service:
+        host: {{ .Values.smtp.service.host | quote }}
+        port: {{ .Values.smtp.service.port | quote }}
+        username: {{ .Values.smtp.service.username | quote }}
+        password: {{ .Values.smtp.service.password | quote }}
+        useTLS: {{ .Values.smtp.service.useTLS | quote }}
+
+redis:
+    enabled: true
+    host: {{ .Values.redis.host | quote }}
+    port: {{ .Values.redis.port | quote }}
+    password: {{ .Values.redis.password | quote }}
+
+abscan:
+    api:
+        name: "abscan-api"
+        variables:
+            logging: {{ .Values.api.logging | quote }}
+            mode: {{ .Values.mode | quote }}
+            host: {{ .Values.api.host | quote }}
+            cors:
+                origins: {{ .Values.cors.origins | quote }}
+            gitlab:
+                refContainer: {{ .Values.gitlab.refContainer | quote }}
+                refFilesystem: {{ .Values.gitlab.refFilesystem | quote }}
+                refDockerfile: {{ .Values.gitlab.refDockerfile | quote }}
+                projectURL: "https://gitlab.com/api/v4/projects/"
+                projectID: {{ .Values.gitlab.projectID | quote }}
+                triggerToken: {{ .Values.gitlab.triggerToken | quote }}
+                privateToken: {{ .Values.gitlab.privateToken | quote }}
+            database:
+                connectionType: {{ .Values.mongodb.connectionType | quote }}
+                host: {{ .Values.mongodb.host | quote }}
+                port: {{ .Values.mongodb.port | quote }}
+                user: {{ .Values.mongodb.user | quote }}
+                pass: {{ .Values.mongodb.pass | quote }}
+                results: "abscan"
+                scans: "scans"
+                cve: "cvedb"
+            jwt:
+                accessTokenExpiration: "3600"
+                refreshTokenExpiration: "2592000"
+                accessTokenSecret: {{ .Values.jwt.accessTokenSecret | quote }}
+                refreshTokenSecret: {{ .Values.jwt.refreshTokenSecret | quote }}
+            cookie:
+                sameSite: {{ .Values.cookie.sameSite | quote }}
+                secure: {{ .Values.cookie.secure | quote }}
+    ui:
+        name: "abscan-ui"
+        variables:
+            {{ if .Values.ingress.tls.enabled }}
+                apiUrl: "https://{{ .Values.hostname.api }}:{{ .Values.service.api.port }}"
+            {{ else }}
+                apiUrl: "http://{{ .Values.hostname.api }}:{{ .Values.service.api.port }}"
+            {{ end }}
+    debug:
+        sentry:
+            accessPoint: "abc"
+            traceLevel: "1"

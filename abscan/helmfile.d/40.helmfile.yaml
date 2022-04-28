@@ -1,0 +1,22 @@
+bases:
+- ../environments.yaml
+
+templates:
+  getVars: &getVars
+    values:
+    - "../charts/{{`{{ .Release.Name }}`}}/values.yaml.gotmpl"
+
+repositories:
+  - name: cve-search
+    url: https://helm.ablabs.io/cve-search
+
+releases:
+  - name: cvesearch
+    namespace: abscan
+    chart: cve-search/cve-search
+    <<: *getVars
+
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  createNamespace: true

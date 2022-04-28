@@ -4,24 +4,26 @@ bases:
 templates:
   getVars: &getVars
     values:
-    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/values.yaml"
-    secrets:
-    - "../charts/{{`{{ .Release.Name }}`}}/{{ .Environment.Name }}/secrets.yaml"
+    - "../charts/{{`{{ .Release.Name }}`}}/values.yaml.gotmpl"
 
 repositories:
-  - name: abscan
-    url: https://helm.ablabs.io/abscan
-  - name: cve-search
-    url: https://helm.ablabs.io/cve-search
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: cvesearch
+  - name: nginxingress
+    installed: {{ eq .Environment.Name "default" | toYaml }}
     namespace: abscan
-    chart: cve-search/cve-search
+    chart: bitnami/nginx-ingress-controller
     <<: *getVars
-  - name: abscan
+  - name: mongodb
+    installed: {{ eq .Environment.Name "default" | toYaml }}
     namespace: abscan
-    chart: abscan/abscan
+    chart: bitnami/mongodb
+    <<: *getVars
+  - name: redis
+    namespace: abscan
+    chart: bitnami/redis
     <<: *getVars
 
 helmDefaults:
