@@ -1,6 +1,6 @@
 replicaCount: 1
 
-mode: development
+mode: "development"
 
 hostname:
     api: "api.abscan.io"

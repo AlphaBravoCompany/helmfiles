@@ -1,6 +1,6 @@
 replicaCount: 3
 
-mode: production
+mode: "production"
 
 hostname:
     api: "api.abscan.io"
