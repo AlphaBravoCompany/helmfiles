@@ -7,6 +7,15 @@ registryCredentials:
 
 imagePullSecrets: {{ .Values.imagePullSecrets | quote }}
 
+job:
+    workers: {{ .Values.cvesearch.workers | default "5" | quote }}
+    history:
+        successful: {{ .Values.cvesearch.history.successful | default 1 }}
+        failed: {{ .Values.cvesearch.history.failed | default 1 }}
+    limits:
+        backoff: {{ .Values.cvesearch.limits.backoff | default 3 }}
+        deadline: {{ .Values.cvesearch.limits.deadline | default 3600 }}
+
 images:
     updater:
         registry: {{ .Values.images.cveUpdater.registry | quote }}
