@@ -62,6 +62,15 @@ api:
     logging: "enabled"
     host: "0.0.0.0"
 
+cvesearch:
+    workers: "10"
+    history:
+        successful: 1
+        failed: 1
+    limits:
+        backoff: 3
+        deadline: 3600
+
 service:
     api:
         port: "8090"
