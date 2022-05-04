@@ -121,9 +121,9 @@ abscan:
         name: "abscan-ui"
         variables:
             {{ if .Values.ingress.tls.enabled }}
-                apiUrl: "https://{{ .Values.hostname.api }}:{{ .Values.service.api.port }}"
+                apiUrl: "https://{{ .Values.hostname.api }}"
             {{ else }}
-                apiUrl: "http://{{ .Values.hostname.api }}:{{ .Values.service.api.port }}"
+                apiUrl: "http://{{ .Values.hostname.api }}"
             {{ end }}
     debug:
         sentry:
