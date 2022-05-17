@@ -12,12 +12,12 @@ repositories:
 
 releases:
   - name: nginxingress
-    installed: {{ eq .Environment.Name "default" | toYaml }}
+    installed: {{ eq .Environment.Name "default" "uat" | toYaml }}
     namespace: abscan
     chart: bitnami/nginx-ingress-controller
     <<: *getVars
   - name: mongodb
-    installed: {{ eq .Environment.Name "default" | toYaml }}
+    installed: {{ eq .Environment.Name "default" "uat" | toYaml }}
     namespace: abscan
     chart: bitnami/mongodb
     <<: *getVars

@@ -13,7 +13,7 @@ imagePullSecrets: "abscan-registry-key"
 
 images:
     api:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/api-dev"
+        registry: "registry.gitlab.com/alphabravocompany/abscan/api-uat"
         tag: "latest"
     operator:
         registry: "eengelking/abscan-operator"
@@ -22,7 +22,7 @@ images:
         registry: "gcr.io/kubebuilder/kube-rbac-proxy"
         tag: "v0.8.0"
     ui:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/ui-dev"
+        registry: "registry.gitlab.com/alphabravocompany/abscan/ui-uat"
         tag: "latest"
     cveUpdater:
         registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
