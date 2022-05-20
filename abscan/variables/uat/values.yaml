@@ -17,7 +17,7 @@ images:
         tag: "latest"
     operator:
         registry: "eengelking/abscan-operator"
-        tag: "0.1.5"
+        tag: "0.1.6"
     rbac:
         registry: "gcr.io/kubebuilder/kube-rbac-proxy"
         tag: "v0.8.0"
