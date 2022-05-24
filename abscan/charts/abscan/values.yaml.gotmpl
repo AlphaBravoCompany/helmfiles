@@ -35,6 +35,22 @@ images:
         tag: {{ .Values.images.ui.tag | quote }}
         pullPolicy: "Always"
 
+persistence:
+  enabled: {{ .Values.persistence.enabled }}
+  existingClaim: {{ .Values.persistence.existingClaim | quote }}
+  accessModes:
+  {{- range .Values.persistence.accessModes }}
+    - {{ . | quote }}
+  {{- end }}
+  size: {{ .Values.persistence.size | quote }}
+  mountPath: {{ .Values.persistence.mountPath | quote }}
+  {{- if or .Values.persistence.annotations }}
+  annotations:
+  {{- if .Values.persistence.annotations }}
+  {{- toYaml . | nindent 8 }}
+  {{- end }}
+  {{- end }}
+
 service:
     type: "ClusterIP"
     api:
