@@ -49,6 +49,7 @@ persistence:
   {{- if .Values.persistence.annotations }}
   {{- toYaml . | nindent 8 }}
   {{- end }}
+  {{- end }}
 
 service:
     type: "ClusterIP"
