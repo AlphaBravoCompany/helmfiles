@@ -17,7 +17,7 @@ images:
         tag: "0.1.3"
     operator:
         registry: "eengelking/abscan-operator"
-        tag: "0.1.6"
+        tag: "0.1.9"
     rbac:
         registry: "gcr.io/kubebuilder/kube-rbac-proxy"
         tag: "v0.8.0"
@@ -30,6 +30,15 @@ images:
     cveRestore:
         registry: "registry.gitlab.com/alphabravocompany/abscan/db-restore"
         tag: "latest"
+
+persistence:
+  enabled: true
+  existingClaim: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 10Gi
+  annotations: {}
+  mountPath: /data
 
 redis:
     host: "redis-master"
