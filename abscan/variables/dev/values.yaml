@@ -9,7 +9,7 @@ hostname:
 registryCredentials:
   registry: "https://registry.gitlab.com"
 
-imagePullSecrets: "abscan-registry-key"
+imagePullSecrets: "cve-search-registry-key"
 
 images:
   api:
