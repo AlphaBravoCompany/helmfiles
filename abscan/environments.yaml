@@ -4,6 +4,11 @@ environments:
         - "../variables/default/values.yaml"
         secrets:
         - "../variables/default/secrets.yaml"
+    dev:
+        values:
+        - "../variables/default/values.yaml"
+        secrets:
+        - "../variables/default/secrets.yaml"
     uat:
         values:
         - "../variables/uat/values.yaml"
