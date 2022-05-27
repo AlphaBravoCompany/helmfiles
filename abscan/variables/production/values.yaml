@@ -3,33 +3,36 @@ replicaCount: 3
 mode: "production"
 
 hostname:
-    api: "api.abscan.io"
-    ui: "abscan.io"
+  api: "api.abscan.io"
+  ui: "abscan.io"
 
 registryCredentials:
-    registry: "https://registry.gitlab.com"
+  registry: "https://registry.gitlab.com"
 
 imagePullSecrets: "abscan-registry-key"
 
 images:
-    api:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/api"
-        tag: "0.1.3"
-    operator:
-        registry: "eengelking/abscan-operator"
-        tag: "0.1.9"
-    rbac:
-        registry: "gcr.io/kubebuilder/kube-rbac-proxy"
-        tag: "v0.8.0"
-    ui:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/ui"
-        tag: "0.1.3"
-    cveUpdater:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
-        tag: "latest"
-    cveRestore:
-        registry: "registry.gitlab.com/alphabravocompany/abscan/db-restore"
-        tag: "latest"
+  api:
+    registry: "registry.gitlab.com/alphabravocompany/abscan/api"
+    tag: "0.1.3"
+  job:
+    registry: "registry.gitlab.com/alphabravocompany/dockerfiles/abscan"
+    tag: "0.1.5"
+  operator:
+    registry: "eengelking/abscan-operator"
+    tag: "0.1.9"
+  rbac:
+    registry: "gcr.io/kubebuilder/kube-rbac-proxy"
+    tag: "v0.8.0"
+  ui:
+    registry: "registry.gitlab.com/alphabravocompany/abscan/ui"
+    tag: "0.1.3"
+  cveUpdater:
+    registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
+    tag: "latest"
+  cveRestore:
+    registry: "registry.gitlab.com/alphabravocompany/abscan/db-restore"
+    tag: "latest"
 
 persistence:
   enabled: true
@@ -41,52 +44,47 @@ persistence:
   mountPath: /data
 
 redis:
-    host: "redis-master"
-    port: "6379"
+  host: "redis-master"
+  port: "6379"
 
 smtp:
-    from:
-        name: "ABScan"
-        address: "info@mail.ablabs.io"
-    service:
-        host: "smtp.sparkpostmail.com"
-        port: "587"
-        username: "SMTP_Injection"
-        useTLS: true
+  from:
+    name: "ABScan"
+    address: "info@mail.ablabs.io"
+  service:
+    host: "smtp.sparkpostmail.com"
+    port: "587"
+    username: "SMTP_Injection"
+    useTLS: true
 
 cors:
-    origins: "http://abscan.io,https://abscan.io,http://abscan.dev,https://abscan.dev"
-    methods: "PUT, GET, POST, OPTIONS, DELETE, PATCH"
-
-gitlab:
-    refContainer: "images-2.1.0"
-    refFilesystem: "filesystem-2.1.0"
-    refDockerfile: "dockerfiles-1.2.1"
+  origins: "http://abscan.io,https://abscan.io,http://abscan.dev,https://abscan.dev"
+  methods: "PUT, GET, POST, OPTIONS, DELETE, PATCH"
 
 cookie:
-    sameSite: "Lax"
-    secure: "1"
+  sameSite: "Lax"
+  secure: "1"
 
 api:
-    logging: "enabled"
-    host: "0.0.0.0"
+  logging: "enabled"
+  host: "0.0.0.0"
 
 cvesearch:
-    workers: "10"
-    history:
-        successful: 1
-        failed: 1
-    limits:
-        backoff: 3
-        deadline: 3600
+  workers: "10"
+  history:
+    successful: 1
+    failed: 1
+  limits:
+    backoff: 3
+    deadline: 3600
 
 service:
-    api:
-        port: "8090"
-    ui:
-        port: "80"
+  api:
+    port: "8090"
+  ui:
+    port: "80"
 
 ingress:
-    className: "nginx"
-    tls:
-        enabled: true
+  className: "nginx"
+  tls:
+    enabled: true
