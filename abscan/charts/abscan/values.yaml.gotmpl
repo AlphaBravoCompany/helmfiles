@@ -22,6 +22,10 @@ images:
         registry: {{ .Values.images.api.registry | quote }}
         tag: {{ .Values.images.api.tag | quote }}
         pullPolicy: "Always"
+    job:
+        registry: {{ .Values.images.job.registry | quote }}
+        tag: {{ .Values.images.job.tag | quote }}
+        pullPolicy: "Always"
     operator:
         registry: {{ .Values.images.operator.registry | quote }}
         tag: {{ .Values.images.operator.tag | quote }}
@@ -108,14 +112,6 @@ abscan:
             host: {{ .Values.api.host | quote }}
             cors:
                 origins: {{ .Values.cors.origins | quote }}
-            gitlab:
-                refContainer: {{ .Values.gitlab.refContainer | quote }}
-                refFilesystem: {{ .Values.gitlab.refFilesystem | quote }}
-                refDockerfile: {{ .Values.gitlab.refDockerfile | quote }}
-                projectURL: "https://gitlab.com/api/v4/projects/"
-                projectID: {{ .Values.gitlab.projectID | quote }}
-                triggerToken: {{ .Values.gitlab.triggerToken | quote }}
-                privateToken: {{ .Values.gitlab.privateToken | quote }}
             database:
                 connectionType: {{ .Values.mongodb.connectionType | quote }}
                 host: {{ .Values.mongodb.host | quote }}

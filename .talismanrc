@@ -10,3 +10,11 @@ fileignoreconfig:
 - filename: abscan/variables/uat/values.yaml
   checksum: 5d67bdfd301ce4ba9dc515bfbbcace27a241219732c7113ed677da235c19fbbe
 version: ""
+fileignoreconfig:
+- filename: abscan/variables/production/secrets.yaml
+  checksum: af519b7c082bd20570d564d0aac05842d619ae9f08cf4e55cab29ad1fb732fc4
+- filename: abscan/variables/default/secrets.yaml
+  checksum: b061a784f1b241e46c4d08d35c159b508c83ed78a14331ef594c98a077f16eb9
+- filename: abscan/variables/uat/secrets.yaml
+  checksum: 7cca313effa4c26df7faa8eb86f9674d24a6b9998ab701e425bd5c4668ea9dd5
+version: ""
