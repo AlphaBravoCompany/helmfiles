@@ -26,3 +26,9 @@ fileignoreconfig:
 - filename: abscan/variables/dev/values.yaml
   checksum: 1c16673ee08e30cc745df9fe4067f3dcd516c7d73bc967c9cd01613839522156
 version: ""
+fileignoreconfig:
+- filename: abscan/environments.yaml
+  checksum: 94519bb130405554ee79a53d9b3dd8c518065f5576768f6c7f0b617f182182c7
+- filename: abscan/variables/dev/values.yaml
+  checksum: b685513f038cc98f78dc1ae915113a0c20b2ea392431ee384982542331a17355
+version: ""

@@ -11,6 +11,8 @@ AGENT ?= 1
 ENVIRONMENT ?= default
 HOSTPORT ?= 80
 SERVICEPORT ?= 80
+SECUREHOSTPORT ?= 443
+SECURESERVICEPORT ?= 443
 DNSNAME ?= abscan.io
 NAMESPACE ?= abscan
 
@@ -20,7 +22,7 @@ help:
 	done
 
 k3d-install: ## Deploys a local K3d cluster for development.
-	@k3d cluster create abscan-dev --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --k3s-arg "--disable=traefik@server:0" --k3s-arg "--tls-san=${DNSNAME}@server:*"
+	@k3d cluster create abscan-dev --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --port "${SECUREHOSTPORT}:${SECURESERVICEPORT}@loadbalancer" --k3s-arg "--disable=traefik@server:0" --k3s-arg "--tls-san=${DNSNAME}@server:*"
 
 k3d-uninstall: ## Deletes the local K3d cluster. DESTRUCTIVE.
 	@k3d cluster delete abscan-dev
