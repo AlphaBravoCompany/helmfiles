@@ -4,3 +4,11 @@ global:
 
 replica:
   replicaCount: {{ .Values.replicaCount }}
+
+resources:
+  limits:
+    memory: "4Gi"
+    cpu: "4000m"
+  requests:
+    memory: "4Gi"
+    cpu: "4000m"
