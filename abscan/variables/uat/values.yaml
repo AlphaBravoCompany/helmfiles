@@ -14,7 +14,7 @@ imagePullSecrets: "abscan-registry-key"
 images:
   api:
     registry: "registry.gitlab.com/alphabravocompany/abscan/api-uat"
-    tag: "latest"
+    tag: "0.1.13"
   job:
     registry: "registry.gitlab.com/alphabravocompany/dockerfiles/abscan"
     tag: "0.1.5"
@@ -26,7 +26,7 @@ images:
     tag: "v0.8.0"
   ui:
     registry: "registry.gitlab.com/alphabravocompany/abscan/ui-uat"
-    tag: "latest"
+    tag: "0.1.13"
   cveUpdater:
     registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
     tag: "latest"
