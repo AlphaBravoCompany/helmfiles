@@ -7,6 +7,7 @@ SHELL ?= /bin/sh
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 FILE_PATH := $(realpath $(dir $(MAKEFILE_PATH)))
 
+CLUSTERNAME ?= abscan-dev
 AGENT ?= 1
 ENVIRONMENT ?= default
 HOSTPORT ?= 80
@@ -22,10 +23,10 @@ help:
 	done
 
 k3d-install: ## Deploys a local K3d cluster for development.
-	@k3d cluster create abscan-dev --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --port "${SECUREHOSTPORT}:${SECURESERVICEPORT}@loadbalancer" --k3s-arg "--disable=traefik@server:0" --k3s-arg "--tls-san=${DNSNAME}@server:*"
+	@k3d cluster create ${CLUSTERNAME} --agents ${AGENT} --port "${HOSTPORT}:${SERVICEPORT}@loadbalancer" --port "${SECUREHOSTPORT}:${SECURESERVICEPORT}@loadbalancer" --k3s-arg "--disable=traefik@server:0" --k3s-arg "--tls-san=${DNSNAME}@server:*"
 
 k3d-uninstall: ## Deletes the local K3d cluster. DESTRUCTIVE.
-	@k3d cluster delete abscan-dev
+	@k3d cluster delete ${CLUSTERNAME}
 
 helm-install: ## Deploys the Helm charts.
 	@helmfile -e $(ENVIRONMENT) sync
