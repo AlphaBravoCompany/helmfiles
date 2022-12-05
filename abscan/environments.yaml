@@ -9,11 +9,11 @@ environments:
         - "../variables/dev/values.yaml"
         secrets:
         - "../variables/dev/secrets.yaml"
-    testing:
+    e2e:
         values:
-        - "../variables/testing/values.yaml"
+        - "../variables/e2e/values.yaml"
         secrets:
-        - "../variables/testing/secrets.yaml"
+        - "../variables/e2e/secrets.yaml"
     uat:
         values:
         - "../variables/uat/values.yaml"
