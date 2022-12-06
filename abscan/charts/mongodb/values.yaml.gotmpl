@@ -5,11 +5,11 @@ auth:
 
 resources:
   limits:
-    memory: "4Gi"
-    cpu: "4000m"
+    memory: {{ .Values.mongodb.resources.limits.memory | quote }}
+    cpu: {{ .Values.mongodb.resources.limits.cpu | quote }}
   requests:
-    memory: "4Gi"
-    cpu: "4000m"
+    memory: {{ .Values.mongodb.resources.requests.memory | quote }}
+    cpu: {{ .Values.mongodb.resources.requests.cpu | quote }}
 
 extraFlags:
   - "--wiredTigerCacheSizeGB=2"
