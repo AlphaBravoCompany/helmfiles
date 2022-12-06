@@ -43,6 +43,15 @@ persistence:
   annotations: {}
   mountPath: /data
 
+mongodb:
+  resources:
+    limits:
+      memory: "2Gi"
+      cpu: "2000m"
+    requests:
+      memory: "2Gi"
+      cpu: "2000m"
+
 redis:
   host: "redis-master"
   port: "6379"
