@@ -13,7 +13,7 @@ imagePullSecrets: "abscan-registry-key"
 
 images:
   api:
-    registry: "registry.gitlab.com/alphabravocompany/abscan/replace-me-api-registry"
+    registry: "registry.gitlab.com/alphabravocompany/security/abscan/replace-me-api-registry"
     tag: "replace-me-api-tag"
   job:
     registry: "registry.gitlab.com/alphabravocompany/dockerfiles/abscan"
@@ -25,7 +25,7 @@ images:
     registry: "gcr.io/kubebuilder/kube-rbac-proxy"
     tag: "v0.8.0"
   ui:
-    registry: "registry.gitlab.com/alphabravocompany/abscan/replace-me-ui-registry"
+    registry: "registry.gitlab.com/alphabravocompany/security/abscan/replace-me-ui-registry"
     tag: "replace-me-ui-tag"
   cveUpdater:
     registry: "registry.gitlab.com/alphabravocompany/abscan/db-updater"
