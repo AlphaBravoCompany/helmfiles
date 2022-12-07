@@ -46,11 +46,11 @@ persistence:
 mongodb:
   resources:
     limits:
-      memory: "2Gi"
-      cpu: "2000m"
+      memory: "change-me-limit-memory"
+      cpu: "change-me-limit-cpu"
     requests:
-      memory: "2Gi"
-      cpu: "2000m"
+      memory: "change-me-requests-memory"
+      cpu: "change-me-requests-cpu"
 
 redis:
   host: "redis-master"
